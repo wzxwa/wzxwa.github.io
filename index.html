@@ -3,59 +3,55 @@
 <script src="./aframe.min.js"></script>
 <!-- we import arjs version without NFT but with marker + location based support -->
 <script src="./aframe-ar-nft.js"></script>
-<script>
-    let canvasppp = document.createElement('canvas');
-    canvasppp.width = canvasppp.clientWidth * window.devicePixelRatio;
-    canvasppp.height = canvasppp.clientHeight * window.devicePixelRatio;
-    canvasppp.className = '111';
-    console.log(canvasppp);
-</script>
 <style>
+    a-scene {
+        width: 600px !important;
+        height: 600px !important;
+    }
+
+    .a-canvas {
+        width: 600px !important;
+        height: 600px !important;
+
+    }
+
+    .box {
+        width: 100px;
+        height: 100px;
+    }
 </style>
 
-<body style="margin : 0px; overflow: hidden;">
-    <a-scene embedded arjs isMobile="true" canvas="canvasppp">
-        <a-marker preset="hiro">
-            <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
-            <!-- <a-text value="BiliBili" color="pink" rotation="-90 0 0"></a-text> -->
+<body>
+    <div class="box">
+        <a-scene arjs>
+            <a-marker-camera preset="hiro">
+                <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
+                <!-- <a-text value="BiliBili" color="pink" rotation="-90 0 0"></a-text> -->
+            </a-marker-camera>
             <a-entity position="0 0 0" scale="0.01 0.01 0.01" gltf-model="./house1.gltf"></a-entity>
-        </a-marker>
-        <a-entity camera="userHeight: 1000.0; zoom:0.5"></a-entity>
-    </a-scene>
+            <!--         <a-entity camera="zoom:0.1">
+                <a-entity geometry="primitive: plane; height: 0.2; width: 0.2" position="0 0 -1"
+                    material="color: gray; opacity: 0.5"></a-entity>
+            </a-entity> -->
+        </a-scene>
+    </div>
 </body>
 <script>
-
-    /*     window.onload = () => {
-            const canvas = document.getElementsByClassName('canvas');
-            console.log(canvas);
-            canvas.width = canvas.clientWidth * window.devicePixelRatio;
-            canvas.height = canvas.clientHeight * window.devicePixelRatio;
-        } */
-    // 检查浏览器是否支持`navigator.mediaDevices`对象
-    /*     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            navigator.mediaDevices.getUserMedia({ video: true, audio: false })
-                .then(function (stream) {
-                    const videoElement = document.getElementsByClassName('canvas')[0];
-    
-                    // 获取视频轨道
-                    const videoTrack = stream.getVideoTracks()[0];
-    
-                    // 获取摄像头的设置
-                    const settings = videoTrack.getSettings();
-    
-                    // 设置视频显示区域大小
-                    videoElement.width = settings.width;
-                    videoElement.height = settings.height;
-    
-                    // 将视频流链接到视频元素
-                    videoElement.srcObject = stream;
-                })
-                .catch(function (error) {
-                    console.error('访问摄像头时发生错误:', error);
-                });
-        } else {
-            console.error('当前浏览器不支持访问摄像头');
-        } */
+    var scene = document.querySelector('a-scene');
+    var marker = document.querySelector('a-marker-camera');
+    var entity = document.querySelector('a-entity');
+    var text = document.querySelector('a-text');
+    var camera = document.querySelector('a-entity[camera]');
+    var plane = document.querySelector('a-entity[geometry]');
+    var canvas = document.querySelector('canvas');
+    console.log(canvas);
+    const dpr = window.devicePixelRatio;
+    const { width, height } = this.canvas;
+    // 重新设置 canvas 自身宽高大小和 css 大小。放大 canvas；css 保持不变，因为我们需要那么多的点
+    this.canvas.width = Math.round(width * dpr);
+    this.canvas.height = Math.round(height * dpr);
+    this.canvas.style.width = width + 'px';
+    this.canvas.style.height = height + 'px';
 
 </script>
 
