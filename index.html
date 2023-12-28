@@ -13,18 +13,17 @@
 <style>
 </style>
 
-<body style="margin : 0px; overflow: hidden;">
-    <a-scene embedded arjs isMobile="true" canvas="canvasppp">
-        <a-marker preset="hiro">
+<body>
+    <a-scene embedded arjs>
+        <a-entity position="0 0 0" scale="0.01 0.01 0.01" gltf-model="./house1.gltf"
+            animation="property: rotation; to: 0 360 0; loop:true;"></a-entity>
+        <a-marker-camera preset="hiro">
             <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
             <!-- <a-text value="BiliBili" color="pink" rotation="-90 0 0"></a-text> -->
-            <a-entity position="0 0 0" scale="0.01 0.01 0.01" gltf-model="./house1.gltf"></a-entity>
-        </a-marker>
-        <a-entity camera></a-entity>
+        </a-marker-camera>
     </a-scene>
 </body>
 <script>
-
     /*     window.onload = () => {
             const canvas = document.getElementsByClassName('canvas');
             console.log(canvas);
