@@ -24,20 +24,18 @@
 <body>
     <div class="box">
         <a-scene arjs>
-            <a-marker-camera preset="hiro">
+            <a-marker preset="hiro">
                 <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
                 <!-- <a-text value="BiliBili" color="pink" rotation="-90 0 0"></a-text> -->
-            </a-marker-camera>
-            <a-entity position="0 0 0" scale="0.01 0.01 0.01" gltf-model="./house1.gltf"></a-entity>
-            <!--         <a-entity camera="zoom:0.1">
-                <a-entity geometry="primitive: plane; height: 0.2; width: 0.2" position="0 0 -1"
-                    material="color: gray; opacity: 0.5"></a-entity>
-            </a-entity> -->
+                <a-entity position="0 0 0" scale="0.01 0.01 0.01" gltf-model="./house1.gltf"></a-entity>
+            </a-marker>
+            <a-entity camera="zoom:0.1">
+            </a-entity>
         </a-scene>
     </div>
 </body>
 <script>
-    var scene = document.querySelector('a-scene');
+/*     var scene = document.querySelector('a-scene');
     var marker = document.querySelector('a-marker-camera');
     var entity = document.querySelector('a-entity');
     var text = document.querySelector('a-text');
@@ -51,7 +49,7 @@
     this.canvas.width = Math.round(width * dpr);
     this.canvas.height = Math.round(height * dpr);
     this.canvas.style.width = width + 'px';
-    this.canvas.style.height = height + 'px';
+    this.canvas.style.height = height + 'px'; */
 
 </script>
 
