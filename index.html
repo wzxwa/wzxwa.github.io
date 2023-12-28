@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<script src="./aframe.min.js"></script>
+<!-- we import arjs version without NFT but with marker + location based support -->
+<script src="./aframe-ar-nft.js"></script>
+<script>
+    let canvasppp = document.createElement('canvas');
+    canvasppp.width = canvasppp.clientWidth * window.devicePixelRatio;
+    canvasppp.height = canvasppp.clientHeight * window.devicePixelRatio;
+    canvasppp.className = '111';
+    console.log(canvasppp);
+</script>
+<style>
+</style>
+
+<body style="margin : 0px; overflow: hidden;">
+    <a-scene embedded arjs isMobile="true" canvas="canvasppp">
+        <a-marker preset="hiro">
+            <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
+            <!-- <a-text value="BiliBili" color="pink" rotation="-90 0 0"></a-text> -->
+            <a-entity position="0 0 0" scale="0.01 0.01 0.01" gltf-model="./house1.gltf"></a-entity>
+        </a-marker>
+        <a-entity camera></a-entity>
+    </a-scene>
+</body>
+<script>
+
+    /*     window.onload = () => {
+            const canvas = document.getElementsByClassName('canvas');
+            console.log(canvas);
+            canvas.width = canvas.clientWidth * window.devicePixelRatio;
+            canvas.height = canvas.clientHeight * window.devicePixelRatio;
+        } */
+    // 检查浏览器是否支持`navigator.mediaDevices`对象
+    /*     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+                .then(function (stream) {
+                    const videoElement = document.getElementsByClassName('canvas')[0];
+    
+                    // 获取视频轨道
+                    const videoTrack = stream.getVideoTracks()[0];
+    
+                    // 获取摄像头的设置
+                    const settings = videoTrack.getSettings();
+    
+                    // 设置视频显示区域大小
+                    videoElement.width = settings.width;
+                    videoElement.height = settings.height;
+    
+                    // 将视频流链接到视频元素
+                    videoElement.srcObject = stream;
+                })
+                .catch(function (error) {
+                    console.error('访问摄像头时发生错误:', error);
+                });
+        } else {
+            console.error('当前浏览器不支持访问摄像头');
+        } */
+
+</script>
+
+</html>
